@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import DashBoard from '../components/UIs/BoardInfo';
 import Nav from '../components/Nav';
-import StatusBlock from '../components/UIs/StatusBlock';
+import StatusBlock from '../components/UIs/DashboardItem';
 
 function AdStatusPage() {
   return (
