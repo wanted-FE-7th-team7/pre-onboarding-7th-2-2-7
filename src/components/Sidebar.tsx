@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import Logo from './UIs/Logo';
 import SidebarItem from './UIs/SidebarItem';
 
 function Sidebar() {
@@ -14,9 +15,10 @@ function Sidebar() {
 
   return (
     <S.Sidebar className="sidebar">
+      <Logo />
       {menus.map((menu, index) => {
         return (
-          <Link to={menu.path} key={index}>
+          <Link to={menu.path} key={index} style={{ textDecoration: 'none' }}>
             <SidebarItem
               menu={menu}
               isActive={pathName === menu.path ? true : false} // 현재 URL pathname과 객체에 담긴 path값 일치 여부 확인
@@ -30,9 +32,11 @@ function Sidebar() {
 
 const S = {
   Sidebar: styled.div`
-    width: 15rem;
+    width: 32rem;
     height: 100vh;
     padding: 1rem;
+
+    text-decoration-line: none;
   `,
 };
 

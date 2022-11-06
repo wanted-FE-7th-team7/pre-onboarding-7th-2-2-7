@@ -22,9 +22,13 @@ function DashboardItem({ title, amount, rate }: Props) {
 const S = {
   DashboardItem: styled.div`
     background-color: wheat;
-    width: 10rem;
-    border-radius: 1rem;
+    width: 304px;
+    height: 79px;
     padding: 1rem;
+
+    background: #ffffff;
+    border: 0.5px solid #edeff1;
+    border-radius: 10px;
 
     .status-title {
       margin-bottom: 1rem;

@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import BoardInfo from '../components/UIs/BoardInfo';
+import BoardInfo from '../components/BoardInfo';
 import Nav from '../components/Nav';
 import ManageBody from '../components/ManageBody';
 
 function AdManagement() {
   return (
     <S.AdManagement>
-      <Nav text="로그인 정보" />
+      <Nav />
       <BoardInfo text="광고관리" />
       <ManageBody />
     </S.AdManagement>
@@ -16,10 +16,13 @@ function AdManagement() {
 
 const S = {
   AdManagement: styled.div`
-    width: 65rem;
+    width: 100rem;
     display: flex;
     flex-direction: column;
     height: 100vh;
+    padding: 1rem;
+
+    background-color: #f6f7f8;
   `,
 };
 

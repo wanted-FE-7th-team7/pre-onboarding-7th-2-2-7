@@ -23,8 +23,8 @@ const S = {
   AppLayout: styled.div`
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 100vh;
+    align-items: center;
+    min-height: 100vh;
   `,
 };
 

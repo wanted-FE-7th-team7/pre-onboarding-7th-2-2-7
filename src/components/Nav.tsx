@@ -1,19 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface Props {
-  text: string;
-}
-
-function Nav({ text }: Props) {
-  return <S.Nav>{text}</S.Nav>;
+function Nav() {
+  return (
+    <S.Nav>
+      <div className="user-info">원티드 님</div>
+    </S.Nav>
+  );
 }
 
 const S = {
   Nav: styled.nav`
-    background-color: green;
+    display: flex;
+    align-items: center;
+    background-color: #f6f7f8;
     width: 100%;
-    height: 4rem;
+    min-height: 5rem;
+    padding-right: 3rem;
+
+    .user-info {
+      font-size: 2rem;
+      margin-left: auto;
+    }
   `,
 };
 
