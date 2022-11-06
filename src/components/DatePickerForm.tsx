@@ -10,6 +10,7 @@ function DatePickerForm() {
   return (
     <S.DatePickerContainer>
       <DatePicker
+        className="date-picker"
         selected={new Date(start)}
         onChange={date =>
           setDate({ start: dayjs(date).format('YYYY-MM-DD'), end })
@@ -17,8 +18,11 @@ function DatePickerForm() {
         selectsStart
         startDate={new Date(start)}
         endDate={new Date(end)}
+        dateFormat="yyyy년 MM월 dd일"
       />
+      <div className="separator">~</div>
       <DatePicker
+        className="date-picker"
         selected={new Date(end)}
         onChange={date =>
           setDate({ start, end: dayjs(date).format('YYYY-MM-DD') })
@@ -27,6 +31,7 @@ function DatePickerForm() {
         startDate={new Date(start)}
         endDate={new Date(end)}
         minDate={new Date(start)}
+        dateFormat="yyyy년 MM월 dd일"
       />
     </S.DatePickerContainer>
   );
@@ -36,8 +41,18 @@ const S = {
   DatePickerContainer: styled.div`
     & {
       display: flex;
-      position: absolute;
-      right: 0;
+      align-items: center;
+      gap: 1rem;
+
+      .date-picker {
+        all: unset;
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+
+      .separator {
+        font-size: 1.4rem;
+      }
     }
   `,
 };

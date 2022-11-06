@@ -56,6 +56,20 @@
         "convValue": 38234789,
         "roas": 411
       }
+    },
+    {
+      "id": 5,
+      "adType": "app",
+      "title": "매드업 앱광고 광고 9913",
+      "budget": 240000,
+      "status": "active",
+      "startDate": "2022-02-10T00:00:00",
+      "endDate": null,
+      "report": {
+        "cost": 9300222,
+        "convValue": 38234789,
+        "roas": 411
+      }
     }
   ]
 }

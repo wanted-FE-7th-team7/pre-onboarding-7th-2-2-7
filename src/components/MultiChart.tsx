@@ -17,6 +17,7 @@ import {
   useFilteredTrendsValue,
   useTrendsSelectsState,
 } from '../store/trend.recoil';
+import styled from 'styled-components';
 
 ChartJS.register(
   LinearScale,
@@ -110,14 +111,17 @@ export function MultiChart() {
   };
 
   useEffect(() => {
-    setLabels([]);
-    data.forEach(e => setLabels(prev => [...prev, e.date]));
-    data.forEach(e => setRoas(prev => [...prev, e.roas]));
-    data.forEach(e => setCost(prev => [...prev, e.cost]));
-    data.forEach(e => setImp(prev => [...prev, e.imp]));
-    data.forEach(e => setClick(prev => [...prev, e.click]));
-    data.forEach(e => setConv(prev => [...prev, e.conv]));
-    data.forEach(e => setConvValue(prev => [...prev, e.convValue]));
+    setLabels(data.map(data => data.date));
+    setRoas(data.map(data => data.roas));
+    setCost(data.map(data => data.cost));
+    setImp(data.map(data => data.imp));
+    setClick(data.map(data => data.click));
+    setConv(data.map(data => data.conv));
+    setConvValue(data.map(data => data.convValue));
+
+    onChangeSelectFirst(selects[0]);
+    onChangeSelectFirst(selects[1]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const onChangeSelectFirst = (selectedOption: string) => {
@@ -177,30 +181,54 @@ export function MultiChart() {
 
   return (
     <>
-      <select
-        onChange={e => onChangeSelectFirst(e.target.value)}
-        value={selects[0]}
-      >
-        <option value="roas">ROAS</option>
-        <option value="cost">광고비</option>
-        <option value="imp">노출수</option>
-        <option value="click">클릭수</option>
-        <option value="conv">전환수</option>
-        <option value="convValue">매출</option>
-      </select>
-      <select
-        onChange={e => onChangeSelectSecond(e.target.value)}
-        value={selects[1]}
-      >
-        <option value="">선택안함</option>
-        <option value="roas">ROAS</option>
-        <option value="cost">광고비</option>
-        <option value="imp">노출수</option>
-        <option value="click">클릭수</option>
-        <option value="conv">전환수</option>
-        <option value="convValue">매출</option>
-      </select>
+      <S.Selection>
+        <select
+          onChange={e => onChangeSelectFirst(e.target.value)}
+          value={selects[0]}
+        >
+          <option value="roas">ROAS</option>
+          <option value="cost">광고비</option>
+          <option value="imp">노출수</option>
+          <option value="click">클릭수</option>
+          <option value="conv">전환수</option>
+          <option value="convValue">매출</option>
+        </select>
+        <select
+          onChange={e => onChangeSelectSecond(e.target.value)}
+          value={selects[1]}
+        >
+          <option value="">선택안함</option>
+          <option value="roas">ROAS</option>
+          <option value="cost">광고비</option>
+          <option value="imp">노출수</option>
+          <option value="click">클릭수</option>
+          <option value="conv">전환수</option>
+          <option value="convValue">매출</option>
+        </select>
+      </S.Selection>
       <Chart type="bar" data={dataSet} options={options} />
     </>
   );
 }
+
+const S = {
+  Selection: styled.div`
+    & {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+
+      & > select {
+        all: unset;
+        cursor: pointer;
+        border-radius: 1rem;
+        border-style: solid;
+        border-width: 0.1rem;
+        border-color: #d1d8dc;
+        padding: 1rem;
+        min-width: 5rem;
+      }
+    }
+  `,
+};
