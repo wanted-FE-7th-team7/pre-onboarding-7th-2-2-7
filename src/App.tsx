@@ -1,7 +1,17 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import Routers from './components/Routers';
+import { routes } from './utils/routes';
 
 function App() {
-  return <div className="App">여기에 앱을 작성해주세요.</div>;
+  return (
+    <RecoilRoot>
+      <BrowserRouter>
+        <Routers routes={routes} />
+      </BrowserRouter>
+    </RecoilRoot>
+  );
 }
 
 export default App;
